@@ -15,7 +15,7 @@ const pokemons = [
     types: ["Grass", "Poison"],
     type1color: "#74CB48",
     type2color: "#A43E9E",
-    number: "#001",
+    number: "001",
     color: "#74CB48",
 
     description:
@@ -37,7 +37,7 @@ const pokemons = [
     moves: ["Blaze", "Power"],
 
     types: ["Fire"],
-    number: "#004",
+    number: "004",
     color: "#F57D31",
     type1color: "#F57D31",
     type2color: "",
@@ -60,7 +60,7 @@ const pokemons = [
     },
     moves: ["Torrent", "Rain-dish"],
     types: ["Water"],
-    number: "#007",
+    number: "007",
     color: "#6493EB",
     type1color: "#6493EB",
     type2color: "",
@@ -82,7 +82,7 @@ const pokemons = [
     },
     moves: ["Compound-eyes", "Tinted-lens"],
     types: ["Bug", "Flying"],
-    number: "#012",
+    number: "012",
     color: "#A7B723",
     type1color: "#A7B723",
     type2color: "#A891EC",
@@ -104,7 +104,7 @@ const pokemons = [
     },
     moves: ["Static", "Lightning-rod"],
     types: ["Electric"],
-    number: "#025",
+    number: "025",
     color: "#F9CF30",
     type1color: "#F9CF30",
     type2color: "",
@@ -132,7 +132,7 @@ const pokemons = [
 
     description:
       "Almost invisible, this gaseous POKéMON cloaks the target and puts it to sleep without notice.",
-    number: "#082",
+    number: "082",
   },
   {
     name: "Ditto",
@@ -154,7 +154,7 @@ const pokemons = [
 
     description:
       "Capable of copying an enemy's genetic code to instantly transform itself into a duplicate of the enemy.",
-    number: "#132",
+    number: "132",
   },
   {
     name: "Mew",
@@ -176,7 +176,7 @@ const pokemons = [
 
     description:
       "So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.",
-    number: "#182",
+    number: "182",
   },
   {
     name: "Aron",
@@ -198,7 +198,7 @@ const pokemons = [
 
     description:
       "This POKéMON has a body of steel. To make its body, ARON feeds on iron ore that it digs from mountains. Occasionally, it causes major trouble by eating bridges and rails.",
-    number: "#304",
+    number: "304",
   },
 ];
 
