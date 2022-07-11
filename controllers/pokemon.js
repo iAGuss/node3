@@ -1,7 +1,7 @@
 const listaPokemon = require("../models/listaPokemon");
 
 exports.getPokemon = (req, res) => {
-  const { name, number, types } = req.query;
+  const { name, number, types, minhp, hp, maxhp } = req.query;
   let pokemon = listaPokemon;
   if (name) {
     pokemon = pokemon.find(
@@ -11,7 +11,6 @@ exports.getPokemon = (req, res) => {
   if (number) {
     pokemon = pokemon.find((pk) => pk.number === number);
   }
-
 
   if (types) {
     const [type1, type2] = types.split(",");
@@ -27,7 +26,15 @@ exports.getPokemon = (req, res) => {
     }
   }
 
-  
+  if (minhp) {
+    pokemon = pokemon.filter((pk) => pk.stats.hp >= minhp);
+  }
+  if (hp) {
+    pokemon = pokemon.filter((pk) => pk.stats.hp == hp);
+  }
+  if (maxhp) {
+    pokemon = pokemon.filter((pk) => pk.stats.hp <= maxhp);
+  }
 
   res.send(pokemon);
 };
