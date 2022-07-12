@@ -1,8 +1,22 @@
 const listaPokemon = require("../models/listaPokemon");
 
 exports.getPokemon = (req, res) => {
-  const { name, number, types, minhp, hp, maxhp } = req.query;
+  const {
+    name,
+    number,
+    types,
+    minhp,
+    hp,
+    maxhp,
+    minatk,
+    atk,
+    maxatk,
+    mindef,
+    def,
+    maxdef,
+  } = req.query;
   let pokemon = listaPokemon;
+
   if (name) {
     pokemon = pokemon.find(
       (pk) => pk.name.toLowerCase() === name.toLowerCase()
@@ -25,7 +39,7 @@ exports.getPokemon = (req, res) => {
       );
     }
   }
-
+  //Barra buscador con hp
   if (minhp) {
     pokemon = pokemon.filter((pk) => pk.stats.hp >= minhp);
   }
@@ -36,5 +50,52 @@ exports.getPokemon = (req, res) => {
     pokemon = pokemon.filter((pk) => pk.stats.hp <= maxhp);
   }
 
+  //Barra buscador con atk
+  if (minatk) {
+    pokemon = pokemon.filter((pk) => pk.stats.atk >= minatk);
+  }
+  if (atk) {
+    pokemon = pokemon.filter((pk) => pk.stats.atk == atk);
+  }
+  if (maxatk) {
+    pokemon = pokemon.filter((pk) => pk.stats.atk <= maxatk);
+  }
+
+  if (mindef) {
+    pokemon = pokemon.filter((pk) => pk.stats.def <= mindef);
+  }
+  if (def) {
+    pokemon = pokemon.filter((pk) => pk.stats.def == def);
+  }
+  if (maxdef) {
+    pokemon = pokemon.filter((pk) => pk.stats.def <= maxdef);
+  }
+
   res.send(pokemon);
+};
+
+//POST
+exports.addpkmn = (req, res) => {
+  const pokemon = req.body;
+  listaPokemon.push(pokemon);
+  res.send("Pokemon agregado: ");
+};
+//PUT
+exports.putpokemon = (req, res) => {
+  const { id } = req.params;
+  const pokemon = req.body;
+  const indiceAcualizar = listaPokemon.findIndex((pk) => pk.number == id);
+  listaPokemon[indiceAcualizar] = pokemon;
+  console.log(listaPokemon[indiceAcualizar]);
+  res.send(listaPokemon[indiceAcualizar]);
+};
+
+//DELETE
+exports.deletepokemon = (req, res) => {
+  const { id } = req.params;
+  const pokemondelete = req.body;
+  const borrarpokemon = listaPokemon.findIndex((pokemon) => pokemon.number == id);
+  listaPokemon[borrarpokemon] = pokemondelete;
+  console.log(listaPokemon[borrarpokemon]);
+  res.send(listaPokemon[borrarpokemon]);
 };

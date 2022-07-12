@@ -1,7 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const { getPokemon } = require("../controllers/pokemon");
+const {
+  getPokemon,
+  addpkmn,
+  putpokemon,
+  deletepokemon,
+} = require("../controllers/pokemon");
 
 router.get("/", getPokemon);
-
+router.post("/addpkmn", addpkmn);
+router.put("/putpokemon/:id", putpokemon);
+router.delete("/deletepokemon/:id", deletepokemon);
 module.exports = router;
