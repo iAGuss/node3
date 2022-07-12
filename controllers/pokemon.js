@@ -82,10 +82,13 @@ exports.addpkmn = (req, res) => {
 };
 //PUT
 exports.putpokemon = (req, res) => {
-  const { id } = req.params;
   const pokemon = req.body;
+  const { id } = req.params;
+
   const indiceAcualizar = listaPokemon.findIndex((pk) => pk.number == id);
-  listaPokemon[indiceAcualizar] = pokemon;
+
+  const poku = { ...listaPokemon[indiceAcualizar], ...pokemon };
+  listaPokemon[indiceAcualizar] = poku;
   console.log(listaPokemon[indiceAcualizar]);
   res.send(listaPokemon[indiceAcualizar]);
 };
@@ -93,12 +96,11 @@ exports.putpokemon = (req, res) => {
 //DELETE
 exports.deletepokemon = (req, res) => {
   const { id } = req.params;
-  const pokemondelete = req.body;
+
   const borrarpokemon = listaPokemon.findIndex(
     (pokemon) => pokemon.number == id
   );
-  const pokeborrar = listaPokemon.splice(borrarpokemon, 1);
-  listaPokemon[pokeborrar] = pokemondelete;
-  console.log(listaPokemon[borrarpokemon]);
-  res.send(listaPokemon[pokeborrar]);
+  listaPokemon.splice(borrarpokemon, 1);
+
+  res.sendStatus(204);
 };
