@@ -1,3 +1,4 @@
+const { STATUS_CODES } = require("http");
 const listaPokemon = require("../models/listaPokemon");
 
 exports.getPokemon = (req, res) => {
@@ -80,17 +81,20 @@ exports.addpkmn = (req, res) => {
   listaPokemon.push(pokemon);
   res.send("Pokemon agregado: ");
 };
+
+
 //PUT
 exports.putpokemon = (req, res) => {
   const pokemon = req.body;
   const { id } = req.params;
-
   const indiceAcualizar = listaPokemon.findIndex((pk) => pk.number == id);
-
+  if (pokemon.name === listaPokemon[indiceAcualizar].name) {
+    res.sendStatus(304);
+  }
   const poku = { ...listaPokemon[indiceAcualizar], ...pokemon };
   listaPokemon[indiceAcualizar] = poku;
   console.log(listaPokemon[indiceAcualizar]);
-  res.send(listaPokemon[indiceAcualizar]);
+  res.sendStatus(204);
 };
 
 //DELETE
