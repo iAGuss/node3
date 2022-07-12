@@ -94,8 +94,11 @@ exports.putpokemon = (req, res) => {
 exports.deletepokemon = (req, res) => {
   const { id } = req.params;
   const pokemondelete = req.body;
-  const borrarpokemon = listaPokemon.findIndex((pokemon) => pokemon.number == id);
-  listaPokemon[borrarpokemon] = pokemondelete;
+  const borrarpokemon = listaPokemon.findIndex(
+    (pokemon) => pokemon.number == id
+  );
+  const pokeborrar = listaPokemon.splice(borrarpokemon, 1);
+  listaPokemon[pokeborrar] = pokemondelete;
   console.log(listaPokemon[borrarpokemon]);
-  res.send(listaPokemon[borrarpokemon]);
+  res.send(listaPokemon[pokeborrar]);
 };
