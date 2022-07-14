@@ -7,7 +7,7 @@ const {
   deletepokemon,
 } = require("../controllers/pokemon");
 
-router.get("/", getPokemon);
+router.get("/pokemones", getPokemon);
 router.post("/addpkmn", addpkmn);
 router.put("/putpokemon/:id", putpokemon);
 router.delete("/deletepokemon/:id", deletepokemon);

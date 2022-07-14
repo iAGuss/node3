@@ -3,6 +3,7 @@ const listaPokemon = require("../models/listaPokemon");
 
 exports.getPokemon = (req, res) => {
   const {
+    Object,
     name,
     number,
     types,
@@ -82,18 +83,21 @@ exports.addpkmn = (req, res) => {
   res.send("Pokemon agregado: ");
 };
 
-
 //PUT
 exports.putpokemon = (req, res) => {
   const pokemon = req.body;
   const { id } = req.params;
   const indiceAcualizar = listaPokemon.findIndex((pk) => pk.number == id);
-  if (pokemon.name === listaPokemon[indiceAcualizar].name) {
-    res.sendStatus(304);
-  }
+  const pokemonProp = Object.keys(pokemon);
+  pokemonProp.forEach((key) => {
+    if (listaPokemon[indiceAcualizar][key] === pokemon[key]) {
+      res.sendStatus(304);
+      return;
+    }
+  });
   const poku = { ...listaPokemon[indiceAcualizar], ...pokemon };
   listaPokemon[indiceAcualizar] = poku;
-  console.log(listaPokemon[indiceAcualizar]);
+  console.log(listaPokemon);
   res.sendStatus(204);
 };
 
