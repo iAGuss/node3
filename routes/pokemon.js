@@ -6,9 +6,10 @@ const {
   putpokemon,
   deletepokemon,
 } = require("../controllers/pokemon");
+const { verifyToken } = require("../controllers/validar");
 
 router.get("/pokemones", getPokemon);
-router.post("/addpkmn", addpkmn);
-router.put("/putpokemon/:id", putpokemon);
-router.delete("/deletepokemon/:id", deletepokemon);
+router.post("/addpkmn", verifyToken, addpkmn);
+router.put("/putpokemon/:id", verifyToken, putpokemon);
+router.delete("/deletepokemon/:id", verifyToken, deletepokemon);
 module.exports = router;

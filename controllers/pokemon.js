@@ -101,7 +101,6 @@ exports.putpokemon = (req, res) => {
   res.sendStatus(204);
 };
 
-//DELETE
 exports.deletepokemon = (req, res) => {
   const { id } = req.params;
 
@@ -110,5 +109,5 @@ exports.deletepokemon = (req, res) => {
   );
   listaPokemon.splice(borrarpokemon, 1);
 
-  res.sendStatus(204);
+  res.sendStatus(200);
 };
