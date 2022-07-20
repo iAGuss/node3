@@ -27,11 +27,11 @@ router.post("/register", async (req, res) => {
 });
 // En routes/auth.js
 router.post("/login", async (req, res) => {
-  ㅤ
+  ㅤ;
   // Buscamos el usuario con el mismo mail
   const user = usuarios.find((u) => u.mail === req.body.mail);
   if (!user) {
-    return res.status(400).json({ error: "Usuario no encontrado" });
+    return res.status(400).json({ error: "Usuario no encontrados" });
   }
   const validPassword = await bcrypt.compare(req.body.password, user.password);
   if (!validPassword) {
