@@ -27,7 +27,6 @@ router.post("/register", async (req, res) => {
 });
 // En routes/auth.js
 router.post("/login", async (req, res) => {
-  ㅤ;
   // Buscamos el usuario con el mismo mail
   const user = usuarios.find((u) => u.mail === req.body.mail);
   if (!user) {

@@ -1,5 +1,11 @@
 const { STATUS_CODES } = require("http");
 const listaPokemon = require("../models/listaPokemon");
+const { Pool } = require("pg");
+const pool = new Pool({
+  user: "postgres",
+  database: "Pokemones",
+  password: "1234",
+});
 
 exports.getPokemon = (req, res) => {
   const {
@@ -110,4 +116,23 @@ exports.deletepokemon = (req, res) => {
   listaPokemon.splice(borrarpokemon, 1);
 
   res.sendStatus(200);
+};
+
+exports.pruebapgadmin = (req, res) => {
+  pool.query("SELECT * from public.prueba", (err, rows, fields) => {
+    if (err) throw err;
+    res.send(rows[0]);
+  });
+};
+
+exports.insertUser = (req, res) => {
+  try {
+    pool.query(
+      "INSERT INTO public.usuario (mail, password,name ) VALUES ($1, $2, $3)",
+      [req.mail, req.password, req.name]
+    );
+    res.send("usuario creado correctamente");
+  } catch (error) {
+    res.status(400).send(error);
+  }
 };
