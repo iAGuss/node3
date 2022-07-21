@@ -126,10 +126,11 @@ exports.pruebapgadmin = (req, res) => {
 };
 
 exports.insertUser = (req, res) => {
+  console.log(req.body);
   try {
     pool.query(
       "INSERT INTO public.usuario (mail, password,name ) VALUES ($1, $2, $3)",
-      [req.mail, req.password, req.name]
+      [req.body.mail, req.body.password, req.body.name]
     );
     res.send("usuario creado correctamente");
   } catch (error) {

@@ -14,6 +14,6 @@ router.get("/pokemones", getPokemon);
 router.post("/addpkmn", verifyToken, addpkmn);
 router.put("/putpokemon/:id", verifyToken, putpokemon);
 router.delete("/deletepokemon/:id", verifyToken, deletepokemon);
-router.post("/putusuario", insertUser);
+router.post("/register", insertUser);
 router.get("/pruebapgadmin", pruebapgadmin);
 module.exports = router;
